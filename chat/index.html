@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head> <link rel="stylesheet" href="style.css" type="text/css"> </head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<body>
+
+<div id="1" style="position:fixed;top:5px;left:10px;height:30px;width:100px;background-color:green;">
+	
+</div>
+
+<div id="2" style="position:fixed;top:5px;left:120px;height:30px;width:200px;background-color:green;">
+	
+</div>
+
+<div id="3" style="position:fixed;top:40px;left:120px;height:60px;width:200px;background-color:blue;">
+	<form action="">
+		<input id="m" type="text"/>
+		<button>Send</button>
+	</form>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  $('form').submit(function(){
+  	socket.emit('chat message',$('#m').val());
+  	$('#m').val('');
+  	return false;
+  });
+  socket.on('chat message',function(message){
+  	$('#2').append($('<li>').text(message));
+  });
+</script>
+
+
+</body>
+</html>

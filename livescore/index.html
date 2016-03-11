@@ -1,0 +1,46 @@
+<html>
+<head>
+
+</head>
+
+<body>
+
+<div class="page-header">
+	<center><h1><strong>Live Match Score Update</strong></h1></center>
+</div>
+<div id="score">
+	<strong>
+		<div class="panel panel-info">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Score</h3>
+  			</div>
+  		</div>
+	</strong>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect();
+  socket.on('change',function(message){
+  	//alert(message);
+  	var str=document.getElementById("score").innerHTML;
+    alert(str);
+  	var fir="<strong><div class='panel panel-info'><div class='panel-heading'><h3 class='panel-title'>";
+    var sec=message.toString();
+    //alert(text(message));
+    var thrd="</h3></div></div></strong>";
+	var dis=str.concat(fir,sec,thrd);
+  //alert(dis);
+  	document.getElementById("score").innerHTML = dis;
+  	//$('#2').append($('<li>').text(message));
+    //document.getElementById("score").innerHTML=message;
+  });
+</script>
+
+
+
+
+</body>
+</html>
