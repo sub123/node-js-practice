@@ -4,7 +4,7 @@ var options = {
 	path:'/1.1/statues/filter.json?track=bieber',
 	method:'GET',
 	headers:{
-		"Authorization":"Basic" + new Buffer("sbhm94:ilovemyparents").toString("base64")
+		"Authorization":"Basic" + new Buffer("username:password").toString("base64")
 	}
 };
 var request = https.request(options,function(response){
